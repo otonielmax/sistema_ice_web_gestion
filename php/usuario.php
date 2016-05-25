@@ -44,5 +44,18 @@
 			*/
 			return 0;
 		}
+
+		function listarUsuario() {
+			$this->model->crearConexion();
+
+			$result = mysql_query("SELECT nombre, apellido, cedula, telefono, correo, usuario FROM sistema_ice.cliente");
+			/*
+			$result = mysql_query("SELECT nombre, direccion, telefono, encargado FROM probuhos_sistema_ice.cliente");
+			*/
+			$this->model->cerrarConexion();
+
+			return $result;
+			
+		}
 	}
 ?>

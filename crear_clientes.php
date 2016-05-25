@@ -508,20 +508,27 @@
                             $telefono = $_POST['telefono'];
                             $encargado = $_POST['encargado'];
 
-                            if (!isset($_POST['coordenadas'])) {
-                                $coordenadas = "";  
+                            if (!isset($_POST['latitud'])) {
+                                $latitud = "";  
                             }
                             else {
-                                $coordenadas = $_POST['coordenadas'];
+                                $latitud = $_POST['latitud'];
                             }
 
-                            $cliente = new Cliente($rif, $nombre, $direccion, $telefono, $encargado, $coordenadas);
+                            if (!isset($_POST['longitud'])) {
+                                $longitud = "";  
+                            }
+                            else {
+                                $longitud = $_POST['longitud'];
+                            }
+
+                            $cliente = new Cliente($rif, $nombre, $direccion, $telefono, $encargado, $latitud, $longitud);
                             $respuestaRegistro = $cliente->registrarCliente();
 
                             unset($_POST);
                             $_POST = array();
 
-                            $cliente->model->cerrarConexion();
+                            //$cliente->model->cerrarConexion();
                             /*
                             if ($respuestaRegistro == 0) {
                                 //header("Location: login.php");
@@ -553,7 +560,11 @@
                             </div>
                             </br>
                             <div class="form-group">
-                                <input type="text" name="coordenadas" class="form-control input-sm m-b-10" placeholder="Coordenadas (Opcional)">
+                                <input type="text" name="latitud" class="form-control input-sm m-b-10" placeholder="Latitud (Opcional)">
+                            </div>
+                            </br>
+                            <div class="form-group">
+                                <input type="text" name="longitud" class="form-control input-sm m-b-10" placeholder="Longitud (Opcional)">
                             </div>
                             </br>
                             <!--

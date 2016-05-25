@@ -13,16 +13,18 @@
 		public $direccion;
 		public $telefono;
 		public $encargado;
-		public $coordenadas;
+		public $latitud;
+		public $longitud;
 
-		function __construct($rif="", $nombre="", $direccion="", $telefono="", $encargado="", $coordenadas="") 
+		function __construct($rif="", $nombre="", $direccion="", $telefono="", $encargado="", $latitud="", $longitud = "") 
 		{
 			$this->rif = $rif;
 			$this->nombre = $nombre;
 			$this->direccion = $direccion;
 			$this->telefono = $telefono;
 			$this->encargado = 	$encargado;
-			$this->coordenadas = $coordenadas;
+			$this->latitud = $latitud;
+			$this->longitud = $longitud;
 
 			$this->model = new Modelo();
 
@@ -31,7 +33,7 @@
 		function registrarCliente() {
 			$this->model->crearConexion();
 
-			$result = mysql_query("INSERT INTO sistema_ice.cliente (rif, nombre, direccion, telefono, encargado, coordenadas) VALUES ('".$this->rif."','".$this->nombre."','".$this->direccion."','".$this->telefono."','".$this->encargado."','".$this->coordenadas."')");
+			$result = mysql_query("INSERT INTO sistema_ice.cliente (rif, nombre, direccion, telefono, encargado, latitud, longitud) VALUES ('".$this->rif."','".$this->nombre."','".$this->direccion."','".$this->telefono."','".$this->encargado."','".$this->latitud."','".$this->longitud."')");
 			/*
 			$result = mysql_query("INSERT INTO probuhos_sistema_ice.cliente (rif, nombre, direccion, telefono, encargado, coordenadas) VALUES ('".$this->rif."','".$this->nombre."','".$this->direccion."','".$this->telefono."','".$this->encargado."','".$this->coordenadas."')");
 			*/
